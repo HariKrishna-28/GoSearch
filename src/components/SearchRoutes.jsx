@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import PageNotFound from './PageNotFound'
 import { Results } from './Results'
-// import Search from './Search'
 
 const SearchRoutes = () => {
     return (
@@ -12,7 +12,7 @@ const SearchRoutes = () => {
                 <Route path="images" element={<Results />} />
                 <Route path="news" element={<Results />} />
                 <Route path="videos" element={<Results />} />
-                <Route path="*" element={<Navigate replace to="/search" />} />
+                <Route path="*" element={< PageNotFound />} />
             </Routes>
         </div>
     )
