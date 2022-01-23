@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Search from './Search';
 
 const NavBar = ({ darkTheme, setDarkTheme }) => {
+
+    useEffect(() => {
+        const userThemePreference = window.matchMedia("(prefers-color-scheme: dark")
+        if (userThemePreference.matches) setDarkTheme(true)
+        // eslint-disable-next-line
+    }, [])
+
     return (
         <div
             className="p-5 pb-0 flex flex-wrap sm:justify-between justify-center  items-center 
@@ -10,9 +17,7 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
             <div
                 className="flex justify-between items-center space-x-5 w-screen ">
                 <Link to="/">
-                    <p
-                        className="text-2xl text-blue-500 font-bold  py-1 px-2 rounded 
-                    ">
+                    <p className="text-2xl text-blue-500 font-bold  py-1 px-2 rounded ">
                         GoSearch
                     </p>
                 </Link>
