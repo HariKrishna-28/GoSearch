@@ -19,7 +19,7 @@ export const Results = () => {
         // eslint-disable-next-line
     }, [searchTerm, location.pathname]);
 
-    if (loading) return <div className="flex items-center justify-center "><ScaleLoader color={darkTheme ? "rgb(29 78 216)" : "black"} /></div>
+    if (loading) return <div className="flex items-center justify-center" style={{ marginTop: "15%" }}><ScaleLoader color={darkTheme ? "rgb(29 78 216)" : "black"} /></div>
     if (!searchTerm) {
         return (
             <div className="flex flex-col justify-center items-center text-2xl h-screen">
