@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import Search from './Search';
 
 const NavBar = ({ darkTheme, setDarkTheme }) => {
-    const userThemePreference = window.matchMedia("(prefers-color-scheme: dark")
+
     useEffect(() => {
+        const userThemePreference = window.matchMedia("(prefers-color-scheme: dark")
         if (userThemePreference.matches) setDarkTheme(true)
         // eslint-disable-next-line
     }, [])
