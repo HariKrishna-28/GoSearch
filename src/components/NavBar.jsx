@@ -7,7 +7,7 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
     useEffect(() => {
         if (userThemePreference.matches) setDarkTheme(true)
         // eslint-disable-next-line
-    }, [userThemePreference])
+    }, [])
 
     return (
         <div
