@@ -9,7 +9,6 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
         if (userThemePreference.matches) setDarkTheme(true)
         // eslint-disable-next-line
     }, [])
-
     return (
         <div
             className="p-5 pb-0 flex flex-wrap sm:justify-between justify-center  items-center 
@@ -24,7 +23,8 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
                 <button
                     type="button"
                     onClick={() => setDarkTheme(!darkTheme)}
-                    className="text-xl font-semibold dark:bg-blue-500 dark:text-gray-900 bg-white border dark:border-none rounded-full 
+                    className="text-xl font-semibold dark:bg-blue-500 dark:text-gray-900
+                     bg-white border dark:border-none rounded-full 
                     px-2 py-1 hover:shadow-lg ">
                     {darkTheme ? '💡 Light' : '🌙 Dark'}</button>
             </div>
