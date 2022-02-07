@@ -18,17 +18,17 @@ function generateHtml(searchQuery, path) {
   return refinedQuery;
 }
 
-async function getData(query) {
-  try {
-    await axios.get(query).then((response) => {
-      const html = response.data;
-      const $ = cheerio.load(html);
-      return $;
-    });
-  } catch {
-    return null;
-  }
-}
+// async function getData(query) {
+//   try {
+//     await axios.get(query).then((response) => {
+//       const html = response.data;
+//       const $ = cheerio.load(html);
+//       return $;
+//     });
+//   } catch {
+//     return null;
+//   }
+// }
 
 app.post("/search", async (req, res) => {
   const searchTerm = req.body.searchTerm;
@@ -50,7 +50,7 @@ app.post("/search", async (req, res) => {
         };
         try {
           if (Object.keys(data).length > 50) return;
-          data.push(...data, details);
+          data.push(details);
         } catch (error) {
           return;
         }
@@ -79,7 +79,7 @@ app.post("/news", async (req, res) => {
         if (text && header) {
           try {
             if (Object.keys(newsData).length > 40) return;
-            newsData.push(...newsData, {
+            newsData.push({
               description: header,
               url: text,
             });
@@ -112,7 +112,7 @@ app.post("/videos", async (req, res) => {
           const result = $(index, html).find("a").attr("href");
           try {
             if (Object.keys(videoData).length > 20) return;
-            if (result) videoData.push(...videoData, { url: result });
+            if (result) videoData.push({ url: result });
           } catch (err) {
             return;
           }

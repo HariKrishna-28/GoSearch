@@ -19,11 +19,27 @@ export const StateContextProvider = ({ children }) => {
       path: window.location.pathname.replace("/", ""),
     };
     console.log(`${base}${path}`);
-    axios.post(`${base}${path}`, details).then((response) => {
-      console.log(response.data);
-      setResults(response.data);
+
+    const data = {
+      method: "post",
+      url: `${base}${path}`,
+      data: details,
+    };
+
+    axios(data).then((response) => {
+      const result = response.data;
+      // let val = [];
+      // // result.map((data) => {
+      // //   val.push(data);
+      // });
+      setResults(result);
       console.log(results);
     });
+    // axios.post(`${base}${path}`, details).then((response) => {
+    //   console.log(response.data);
+    //   setResults(response.data);
+    //   console.log(results);
+    // });
 
     // const res = await fetch(`${baseUrl}${url}`, {
     //   method: "GET",
