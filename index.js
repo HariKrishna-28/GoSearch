@@ -45,8 +45,8 @@ app.post("/search", async (req, res) => {
         let b = $(index, html).find("h3").text();
         if (!a || !b) return;
         let details = {
-          name: b,
-          url: a,
+          title: b,
+          link: a,
         };
         try {
           if (Object.keys(data).length > 50) return;
@@ -88,7 +88,6 @@ app.post("/news", async (req, res) => {
           }
         }
       });
-      // console.log(newsData);
       res.json(newsData);
     });
   } catch (error) {

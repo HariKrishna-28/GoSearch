@@ -5,8 +5,9 @@ import { useStateContext } from '../contexts/StateContextProvider';
 import { ScaleLoader } from 'react-spinners';
 
 export const Results = () => {
-    const { results, loading, getResults, searchTerm, darkTheme } = useStateContext();
+    const { state, loading, getResults, searchTerm, darkTheme } = useStateContext();
     const location = useLocation();
+    console.log(state.scrapedData)
 
     useEffect(() => {
         if (searchTerm !== '') {
