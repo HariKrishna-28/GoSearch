@@ -12,8 +12,9 @@ export const StateContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [darkTheme, setDarkTheme] = useState(false);
 
+
   const getResults = async (url) => {
-    const base = "http://localhost:5000";
+    const base = process.env.REACT_APP_BASE_URL;
     const path = window.location.pathname;
     setLoading(true);
     const details = {
@@ -26,11 +27,11 @@ export const StateContextProvider = ({ children }) => {
       data: details,
     };
     axios(data).then((response) => {
-      // setLoading(true);
       let variable = response.data;
       dispatch({ type: "scrapedData", payload: variable });
-      console.log(state.scrapedData);
-      setLoading(false);
+      if (state.scrapedData){
+        setLoading(false)
+      }
     });
 
     // axios.post(`${base}${path}`, details).then((response) => {

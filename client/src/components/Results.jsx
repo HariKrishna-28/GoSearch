@@ -7,7 +7,7 @@ import { ScaleLoader } from 'react-spinners';
 export const Results = () => {
     const { state, loading, getResults, searchTerm, darkTheme } = useStateContext();
     const location = useLocation();
-    console.log(state.scrapedData)
+    console.log(state.scrapedData);
 
     useEffect(() => {
         if (searchTerm !== '') {
@@ -33,19 +33,23 @@ export const Results = () => {
     switch (location.pathname) {
         case '/search':
             return (
-                <h1>hi</h1>
-                // <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
-                //     {results?.results?.map(({ link, title }, index) => {
-                //         return (
-                //             <div key={index} className="md:w-2/5 w-full">
-                //                 <a href={link} target="_blank" rel="noreferrer">
-                //                     <p className="text-sm">{link.length > 30 ? link.substring(0, 30) : link}</p>
-                //                     <p className="text-lg hover:underline dark:text-blue-300 text-blue-700  ">{title}</p>
-                //                 </a>
-                //             </div>
-                //         )
-                //     })}
-                // </div >
+                <>
+                    <h1>hi</h1>
+                    {/* {state.scrapedData && (
+                        <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+                            {state.scrapedData?.state.scrapedData?.map(({ link, title }, index) => {
+                                return (
+                                    <div key={index} className="md:w-2/5 w-full">
+                                        <a href={link} target="_blank" rel="noreferrer">
+                                            <p className="text-sm">{link.length > 30 ? link.substring(0, 30) : link}</p>
+                                            <p className="text-lg hover:underline dark:text-blue-300 text-blue-700  ">{title}</p>
+                                        </a>
+                                    </div>
+                                )
+                            })}
+                        </div >
+                    )} */}
+                </>
             );
         case '/images':
             return (
