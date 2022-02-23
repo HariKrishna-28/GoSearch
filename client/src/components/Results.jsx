@@ -3,22 +3,29 @@ import { useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { useStateContext } from '../contexts/StateContextProvider';
 import { ScaleLoader } from 'react-spinners';
+import RenderResults from './RenderResults';
 
 export const Results = () => {
-    const { state, loading, getResults, searchTerm, darkTheme } = useStateContext();
+    const { state, loading, getResults, searchTerm, darkTheme, setLoading } = useStateContext();
     const location = useLocation();
     console.log(state.scrapedData);
 
     useEffect(() => {
+        // setLoading(false)
         if (searchTerm !== '') {
             if (location.pathname === '/videos') {
                 getResults(`/search/q=${searchTerm} videos`);
+
             } else {
                 getResults(`${location.pathname}/q=${searchTerm}&num=40`);
             }
         }
         // eslint-disable-next-line
     }, [searchTerm, location.pathname]);
+
+    useEffect(() => {
+        setLoading(false)
+    }, [location.pathname])
 
     if (loading) return <div className="flex items-center justify-center" style={{ marginTop: "15%" }}><ScaleLoader color={darkTheme ? "rgb(29 78 216)" : "black"} /></div>
     if (!searchTerm) {
@@ -29,6 +36,10 @@ export const Results = () => {
         )
     }
 
+    return (
+        state.scrapedData && !loading &&
+        <RenderResults location={location.pathname} scrapedData={state.scrapedData} />
+    )
 
     switch (location.pathname) {
         case '/search':

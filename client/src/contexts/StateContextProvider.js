@@ -6,7 +6,7 @@ const StateContext = createContext();
 // const baseUrl = "https://google-search3.p.rapidapi.com/api/v1";
 
 export const StateContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, { scrapedData: {} });
+  const [state, dispatch] = useReducer(reducer, { scrapedData: null });
   // const [results, setResults] = useState({});
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,9 +26,9 @@ export const StateContextProvider = ({ children }) => {
       url: `${base}${path}`,
       data: details,
     };
-    axios(data).then((response) => {
-      let variable = response.data;
-      dispatch({ type: "scrapedData", payload: variable });
+    await axios(data).then((response) => {
+      let scrapedData = response.data;
+      dispatch({ type: "scrapedData", payload: scrapedData });
       if (state.scrapedData){
         setLoading(false)
       }
@@ -63,6 +63,7 @@ export const StateContextProvider = ({ children }) => {
         setSearchTerm,
         loading,
         darkTheme,
+        setLoading,
         setDarkTheme,
       }}
     >
