@@ -44,7 +44,8 @@ export const Results = () => {
 
     return (
         !internalLoad &&
-        <RenderResults location={location.pathname} scrapedData={state.scrapedData} />
+        // <RenderResults location={location.pathname} scrapedData={state.scrapedData} />
+        <RenderResults location={location.pathname} scrapedData={[]} />
     )
 
     switch (location.pathname) {
