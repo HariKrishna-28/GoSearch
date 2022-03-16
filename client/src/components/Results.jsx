@@ -9,7 +9,6 @@ export const Results = () => {
     const { state, loading, getResults, searchTerm, darkTheme, setLoading } = useStateContext();
     const [internalLoad, setInteralLoad] = useState(false)
     const location = useLocation();
-    console.log(state.scrapedData);
     const [prevState, setPrevState] = useState(state.scrapedData)
 
 
@@ -29,7 +28,6 @@ export const Results = () => {
     }, [searchTerm, location.pathname]);
 
     useEffect(() => {
-        console.log("hi")
         setInteralLoad(true)
         // setLoading(true)
     }, [location.pathname])

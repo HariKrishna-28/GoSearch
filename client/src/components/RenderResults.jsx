@@ -2,12 +2,10 @@ import React from 'react'
 import ReactPlayer from 'react-player';
 
 const RenderResults = ({ scrapedData, location }) => {
-    console.log(scrapedData, location)
     switch (location) {
         case '/search':
             return (
                 <div className="sm:px-56 flex flex-wrap justify-between space-y-6" >
-                    <h1>hi</h1>
                     {
                         scrapedData.map(({ link, title }, index) => {
                             return (
