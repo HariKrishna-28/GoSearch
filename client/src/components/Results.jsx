@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 import { useStateContext } from '../contexts/StateContextProvider';
 import { ScaleLoader } from 'react-spinners';
 import RenderResults from './RenderResults';
 
 export const Results = () => {
-    const { state, loading, getResults, searchTerm, darkTheme, setLoading } = useStateContext();
+    const { state, loading, getResults, searchTerm, darkTheme } = useStateContext();
     const [internalLoad, setInteralLoad] = useState(false)
     const location = useLocation();
-    const [prevState, setPrevState] = useState(state.scrapedData)
+    const [prevState] = useState(state.scrapedData)
 
 
     useEffect(() => {
@@ -33,9 +33,9 @@ export const Results = () => {
     }, [location.pathname])
 
     useEffect(() => {
-        if (state.scrapedData != prevState)
+        if (state.scrapedData !== prevState)
             setInteralLoad(false)
-    }, [state.scrapedData])
+    }, [state.scrapedData, prevState])
 
     if (loading) return <div className="flex items-center justify-center" style={{ marginTop: "15%" }}><ScaleLoader color={darkTheme ? "rgb(29 78 216)" : "black"} /></div>
     if (!searchTerm) {

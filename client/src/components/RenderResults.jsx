@@ -52,6 +52,7 @@ const RenderResults = ({ scrapedData, location }) => {
                     })}
                 </div>
             )
+        default: return
     }
 }
 
