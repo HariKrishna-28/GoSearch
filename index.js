@@ -30,6 +30,10 @@ function generateHtml(searchQuery, path) {
 //   }
 // }
 
+app.get("/", (req, res) => {
+  res.send("server up");
+});
+
 app.post("/search", async (req, res) => {
   const searchTerm = req.body.searchTerm;
   const path = req.body.path;
